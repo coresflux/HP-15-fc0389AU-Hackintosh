@@ -21,10 +21,17 @@ This EFI is made specifically for macOS Sequoia. It is not intended for Tahoe.
 - ✅ Built-in camera
 - ✅ Keyboard
 - ✅ Trackpad
+- ✅ Speaker
+- ✅USB+type C ports 
 
 ## Not working
 
 - ❌ 3.5 mm headphone jack
+- ❌Chrome browser don't work as chrome requires some special apple proprietry Graphics instruction,use Safari
+## Prerequisites
+- Mac OS cannot dynamically share system ram in igpu,you need to increase UMA size from 512MB default to  2GB ,since HP bios is locked you need to use [Smokeless_UMAF](https://github.com/DavidS95/Smokeless_UMAF) then navigate through **Device Manager > AMD CBS > NBIO Common Options > GFX Configuration**.
+- Set iGPU Configuration to "**UMA_GAME_OPTIMIZED**", then save and exit
+- note: Dont select UMA Specified and select 2GB as this dont work in this laptop
 
 ## Installation
 
@@ -69,7 +76,8 @@ Mac os is currently running without graphics acceleration(very sluggish) and man
 You should now be able to boot macOS directly from your SSD without the USB pendrive.
 
 Keep the USB EFI as backup
-###Warning⚠️
+
+### Warning⚠️
 - Never use restart in mac os,as it breaks ACPI and EC states,casing boot loop,only use shutdown,sleep
 
 ## Credits
