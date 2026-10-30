@@ -27,11 +27,11 @@ This EFI is made specifically for macOS Sequoia. It is not intended for Tahoe.
 ## Not working
 
 - ❌ 3.5 mm headphone jack
-- ❌Chrome browser don't work as chrome requires some special apple proprietry Graphics instruction,use Safari
+- ❌Chrome browser don't work as chrome uses some special apple proprietry Graphics instruction,use Safari
 ## Prerequisites
 - Mac OS cannot dynamically share system ram in igpu,you need to increase UMA size from 512MB default to  2GB ,since HP bios is locked you need to use [Smokeless_UMAF](https://github.com/DavidS95/Smokeless_UMAF) then navigate through **Device Manager > AMD CBS > NBIO Common Options > GFX Configuration**.
 - Set iGPU Configuration to "**UMA_GAME_OPTIMIZED**", then save and exit
-- note: Dont select UMA Specified and select 2GB as this dont work in this laptop
+- Note: Dont select UMA Specified and select 2GB as this dont work in this laptop
 
 ## Installation
 
@@ -41,7 +41,7 @@ Before booting, generate your own SMBIOS using [GenSMBIOS](https://github.com/co
 - Open GenSMBIOS.bat
 - Select any of the two plist file in EFI/OC folder
 - Select `MacBookPro16,3` as the model.
-- It will generate unique serial number, MLB and SystemUUID and will add to plist
+- It will generate unique serial number, MLB and SystemUUID and will add to the selected plist
 - Open proper tree and copy serial number, MLB and SystemUUID from plist you just modified with GenSMBIOS then past in the other plist 
 
 
@@ -53,7 +53,7 @@ Before booting, generate your own SMBIOS using [GenSMBIOS](https://github.com/co
 - Copy that folder and past in the root of your intallation pendrive
 - copy the EFI folder to root of pendrive
 - Rename `config_installation.plist` to `config.plist` in the D:/EFI/OC folder(D is your pendrive drive letter)
-- Disable secure boot of your laptop and boot the pendrive
+- Disable secure boot in your laptop and boot the pendrive
 - This  `config_installation.plist` configuration includes a workaround for the installation freezing issue related to NootedRed. Use it when booting the installer.
 ### 4. Internet during installation
 
@@ -64,13 +64,13 @@ Before booting, generate your own SMBIOS using [GenSMBIOS](https://github.com/co
 - Wi-Fi should work after installation when using the final configuration.
 
 ### 5. After getting on mac os desktop – IMPORTANT
-Mac os is currently running without graphics acceleration(very sluggish) and many feature compromised,to fix it:
+Mac os is currently running without graphics acceleration(very sluggish) and many features are compromised to fix it:
 1. Open macOS and mount the EFI partition of your internal SSD using an EFI mounting utility.
 2. Also mount the EFI partition of your USB pendrive.
 3. Open the USB EFI partition and copy its `EFI` folder.
 4. Paste that entire `EFI` folder into the EFI partition of your SSD where mac is installed.
 5. Now in the pasted EFI ,go to OC delete config.plist , rename  `config_final.plist` to `config.plist`
-6. Eject the USB and restart the laptop.
+6. Eject the USB and restart the laptop,boot from the mac drive.
 7. Enjoy!
 
 You should now be able to boot macOS directly from your SSD without the USB pendrive.
@@ -78,7 +78,7 @@ You should now be able to boot macOS directly from your SSD without the USB pend
 Keep the USB EFI as backup
 
 ### Warning⚠️
-- Never use restart in mac os,as it breaks ACPI and EC states,casing boot loop,only use shutdown,sleep
+- Never use restart option in mac os,as it breaks ACPI and EC states,causing boot loops,only use shutdown,sleep
 
 ## Credits
 
